@@ -99,7 +99,7 @@ int x = 3;
 template <typename T>
 class bar;
 
-//bar - дружественный для foo class несмотря на его шаблонный параметр
+//bar - дружественный для foo class, несмотря на его шаблонный параметр
 //bar<int>, bar<char> и т.д - все они будут друзьями foo<char>, foo<double>, ...
 template<typename T>
 struct foo {
