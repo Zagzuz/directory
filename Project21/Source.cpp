@@ -99,29 +99,29 @@ int x = 3;
 template <typename T>
 class bar;
 
-//bar - дружественный для foo class несмотря на его шаблонный параметр
-//bar<int>, bar<char> и т.д - все они будут друзьями foo<char>, foo<double>, ...
+//bar - РґСЂСѓР¶РµСЃС‚РІРµРЅРЅС‹Р№ РґР»СЏ foo class РЅРµСЃРјРѕС‚СЂСЏ РЅР° РµРіРѕ С€Р°Р±Р»РѕРЅРЅС‹Р№ РїР°СЂР°РјРµС‚СЂ
+//bar<int>, bar<char> Рё С‚.Рґ - РІСЃРµ РѕРЅРё Р±СѓРґСѓС‚ РґСЂСѓР·СЊСЏРјРё foo<char>, foo<double>, ...
 template<typename T>
 struct foo {
 	template<typename U>
 	friend class bar;
 };
 
-//или так:
+//РёР»Рё С‚Р°Рє:
 template <typename T>
 struct foo3 {
 	template <typename>
 	friend class bar;
 };
 
-//bar - дружественный для foo только если foo имеет тот же параметр
-//bar<int> - друг foo<int>, но не друг foo<char>
+//bar - РґСЂСѓР¶РµСЃС‚РІРµРЅРЅС‹Р№ РґР»СЏ foo С‚РѕР»СЊРєРѕ РµСЃР»Рё foo РёРјРµРµС‚ С‚РѕС‚ Р¶Рµ РїР°СЂР°РјРµС‚СЂ
+//bar<int> - РґСЂСѓРі foo<int>, РЅРѕ РЅРµ РґСЂСѓРі foo<char>
 template<typename T>
 struct foo2 {
 	friend class bar<T>;
 };
 
-//test получит доступ к приватным полям класса T
+//test РїРѕР»СѓС‡РёС‚ РґРѕСЃС‚СѓРї Рє РїСЂРёРІР°С‚РЅС‹Рј РїРѕР»СЏРј РєР»Р°СЃСЃР° T
 template <typename T>
 class test {
 	friend T;             // note, not 'friend class T'!!!
